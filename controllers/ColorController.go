@@ -55,6 +55,9 @@ func (c *ColorController) GetDominantColor(img image.Image) (int, int, int) {
 
 // Get 获取图片的主色
 func (c *ColorController) Get() {
+	c.Ctx.ResponseWriter.Header().Set("Access-Control-Allow-Origin", "*") // 允许所有来源
+	c.Ctx.ResponseWriter.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+	c.Ctx.ResponseWriter.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 	// 获取URL参数
 	urlStr := c.GetString("url")
 	if urlStr == "" {
